@@ -45,13 +45,13 @@ ASA : nat                       { Num $1 }
     | '(' "sub1" ASA ')'        {Sub1 $3}
     | '(' "zero?" ASA ')'       {ZeroP $3}
     | '(' "expt" ASA ASA ')'    {Expt $3 $4}
-    | '(' '<' ASA ASA ')'       {Lt $3 $4}
-    | '(' '>' ASA ASA ')'       {Gt $3 $4}
-    | '(' "<=" ASA ASA ')'      {Le $3 $4}
-    | '(' ">=" ASA ASA ')'      {Ge $3 $4}
-    | '(' "eq" ASA ASA ')'      {Eq $3 $4}
+    | '(' '<' listaDeASAs ')'   {Lt $3}
+    | '(' '>' listaDeASAs ')'   {Gt $3}
+    | '(' "<=" listaDeASAs ')'  {Le $3}
+    | '(' ">=" listaDeASAs ')'  {Ge $3}
+    | '(' "eq" ASA ASA ')'      {EqP $3 $4}
 
-ListaDeASAs : ASA ASA           { [$1,$2] }
+listaDeASAs : ASA ASA           { [$1,$2] }
             | ASA listaDeASAs   { $1 : $2}
 
 -- RETO 2:
